@@ -1,8 +1,10 @@
 <?php
 
-    http_response_code(200);
+    header('HTTP/1.1 200 OK');
+// SDK de Mercado Pago
+require __DIR__ .  '/vendor/autoload.php';
 
-    MercadoPago\SDK::setAccessToken("ENV_ACCESS_TOKEN");
+    MercadoPago\SDK::setAccessToken("TEST-8049437300582624-072304-d7af7ea61959047b81dd8b379f76ebdc-148176642");
 
     switch($_POST["type"]) {
         case "payment":

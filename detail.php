@@ -10,12 +10,16 @@ $preference = new MercadoPago\Preference();
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
-$item->title = 'Mi producto';
-$item->quantity = 1;
-$item->unit_price = 75.56;
+$item->title = $_POST['title'];
+$item->quantity = $_POST['unit'];
+$item->unit_price = $_POST['price'];
 $preference->items = array($item);
 $preference->save();
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -1,8 +1,8 @@
 <?php
 
 if (isset($_GET)) {
-    if (isset($_GET['payment_method_id'])) {
-        $pay_method = $_GET['payment_method_id'];
+    if (isset($_GET['payment_type'])) {
+        $pay_method = $_GET['payment_type'];
     } else {
         $pay_method = "";
     }
@@ -13,8 +13,8 @@ if (isset($_GET)) {
         $pay_eref = "";
     }
 
-    if (isset($_GET['payment_id'])) {
-        $pay_id = $_GET['payment_id'];
+    if (isset($_GET['collection_id'])) {
+        $pay_id = $_GET['collection_id'];
     } else {
         $pay_id = "";
     }

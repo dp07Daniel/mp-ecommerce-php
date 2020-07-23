@@ -67,7 +67,8 @@ $preference->back_urls = array(
   "failure" => $protocol . '://' . $host . "/failure.php"
 );
 $preference->auto_return = "approved";
-$preference->notification_url = $protocol . '://' . $host . "/notificacion.php";
+$preference->notification_url = "https://3dd5264e2b0010c95e55e53d82a26f98.m.pipedream.net";
+//$preference->notification_url = $protocol . '://' . $host . "/notificacion.php";
 $preference->save();
 
 

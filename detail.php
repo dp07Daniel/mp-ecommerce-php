@@ -22,12 +22,11 @@ $payer->address = array(
 
 // Crea un objeto de métodos de pago
 $payment_methods = new MercadoPago\PaymentMethod();
-$payment_methods->excluded_payment_methods = array(
-  "id" => "amex"
-);
-$payment_methods->excluded_payment_types = array(
-  "id" => "atm"
-);
+$payment_methods->installments = 6;
+$metodos = array("id" => "amex");
+$tipos = array("id" => "atm");
+$payment_methods->excluded_payment_methods = array($metodos);
+$payment_methods->excluded_payment_types = array($tipos);
 
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();

@@ -21,6 +21,11 @@ require __DIR__ .  '/vendor/autoload.php';
             break;
     }
 
+    echo "<pre>";
+    print_r($payment);
+    print_r($plan);
+    echo "</pre>";
+
     if (isset($payment)) {
         $dp_pay = json_encode($payment);
         $arpay = fopen("downloads/".$_POST["id"].".txt", "a") or

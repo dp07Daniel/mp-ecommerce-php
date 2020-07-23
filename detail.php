@@ -4,7 +4,7 @@ require __DIR__ .  '/vendor/autoload.php';
 
 // Agrega credenciales
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
-MercadoPago\SDK::setAccessToken('TEST-8049437300582624-072304-d7af7ea61959047b81dd8b379f76ebdc-148176642');
+MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 
 // Configuro las URL
 $s = $_SERVER;
@@ -20,7 +20,7 @@ $port = ( ( ( ! $ssl && $port == '8080' ) || ( ! $ssl && $port == '80' ) ) || ( 
 $host = isset( $host ) ? $host : $_SERVER['SERVER_NAME'] . $port;
 
 // Crea un objeto de pagador
-/*
+
 $payer = new MercadoPago\Payer();
 $payer->name = "Lalo";
 $payer->surname = "Landa";
@@ -34,7 +34,7 @@ $payer->address = array(
   "street_number" => 123,
   "zip_code" => "1111"
 );
-*/
+
 
 // Crea un objeto de métodos de pago
 $payment_methods = new MercadoPago\PaymentMethod();
@@ -59,7 +59,7 @@ $item->unit_price = $_POST['price'];
 $preference->items = array($item);
 
 $preference->external_reference = "daniel@dp07daniel.com";
-//$preference->payer = $payer;
+$preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
 $preference->back_urls = array(
   "success" => $protocol . '://' . $host . "/success.php",

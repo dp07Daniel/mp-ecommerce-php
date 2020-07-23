@@ -59,8 +59,8 @@ $item->unit_price = $_POST['price'];
 $preference->items = array($item);
 
 $preference->external_reference = "daniel@dp07daniel.com";
-//$preference->payer = $payer;
-$preference->payment_methods = $payment_methods;
+$preference->payer = $payer;
+//$preference->payment_methods = $payment_methods;
 $preference->back_urls = array(
   "success" => $protocol . '://' . $host . "/success.php",
   "pending" => $protocol . '://' . $host . "/pending.php",

@@ -59,16 +59,16 @@ $item->unit_price = $_POST['price'];
 $preference->items = array($item);
 
 $preference->external_reference = "daniel@dp07daniel.com";
-$preference->payer = $payer;
-//$preference->payment_methods = $payment_methods;
+//$preference->payer = $payer;
+$preference->payment_methods = $payment_methods;
 $preference->back_urls = array(
   "success" => $protocol . '://' . $host . "/success.php",
   "pending" => $protocol . '://' . $host . "/pending.php",
   "failure" => $protocol . '://' . $host . "/failure.php"
 );
 $preference->auto_return = "approved";
-$preference->notification_url = "https://3dd5264e2b0010c95e55e53d82a26f98.m.pipedream.net";
-//$preference->notification_url = $protocol . '://' . $host . "/notificacion.php";
+//$preference->notification_url = "https://3dd5264e2b0010c95e55e53d82a26f98.m.pipedream.net";
+$preference->notification_url = $protocol . '://' . $host . "/notificacion.php";
 $preference->save();
 
 

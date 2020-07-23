@@ -6,6 +6,7 @@ require __DIR__ .  '/vendor/autoload.php';
 MercadoPago\SDK::setAccessToken('TEST-8049437300582624-072304-d7af7ea61959047b81dd8b379f76ebdc-148176642');
 
 // Crea un objeto de pagador
+/*
 $payer = new MercadoPago\Payer();
 $payer->name = "Lalo";
 $payer->surname = "Landa";
@@ -18,7 +19,7 @@ $payer->address = array(
   "street_name" => "Falsa",
   "street_number" => 123,
   "zip_code" => "1111"
-);
+);*/
 
 // Crea un objeto de métodos de pago
 $payment_methods = new MercadoPago\PaymentMethod();
@@ -42,7 +43,7 @@ $item->unit_price = $_POST['price'];
 $preference->items = array($item);
 
 $preference->external_reference = "daniel@dp07daniel.com";
-$preference->payer = $payer;
+//$preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
 $preference->save();
 

@@ -5,16 +5,51 @@ require __DIR__ .  '/vendor/autoload.php';
 // Agrega credenciales
 MercadoPago\SDK::setAccessToken('TEST-8049437300582624-072304-d7af7ea61959047b81dd8b379f76ebdc-148176642');
 
+// Crea un objeto de pagador
+$payer = new MercadoPago\Payer();
+$payer->name = "Lalo";
+$payer->surname = "Landa";
+$payer->email = "test_user_63274575@testuser.com";
+$payer->phone = array(
+  "area_code" => "11",
+  "number" => "22223333"
+);
+$payer->address = array(
+  "street_name" => "Falsa",
+  "street_number" => 123,
+  "zip_code" => "1111"
+);
+
+// Crea un objeto de métodos de pago
+$payment_methods = new MercadoPago\PaymentMethod();
+$payment_methods->excluded_payment_methods = array(
+  "id" => "amex"
+);
+$payment_methods->excluded_payment_types = array(
+  "id" => "atm"
+);
+
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
+$item->id = "1234";
 $item->title = $_POST['title'];
+$item->description = "Dispositivo móvil de Tienda e-commerce";
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
+
 $preference->items = array($item);
+
+$preference->external_reference = "daniel@dp07daniel.com";
+$preference->payer = $payer;
+$preference->payment_methods = $payment_methods;
 $preference->save();
+
+
+
+
 ?>
 
 
@@ -147,10 +182,10 @@ $preference->save();
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo $_POST['unit'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                     </div>
                                     <!--

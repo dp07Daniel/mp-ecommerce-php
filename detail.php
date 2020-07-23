@@ -5,6 +5,21 @@ require __DIR__ .  '/vendor/autoload.php';
 // Agrega credenciales
 MercadoPago\SDK::setAccessToken('TEST-8049437300582624-072304-d7af7ea61959047b81dd8b379f76ebdc-148176642');
 
+// Configuro las URL
+$s = $_SERVER;
+$use_forwarded_host = false;
+
+$ssl = (( ! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ) ? true : false);
+$sp = strtolower( $_SERVER['SERVER_PROTOCOL'] );
+$protocol = substr( $sp, 0, strpos( $sp, '/'  )) . ( ( $ssl ) ? 's' : '' );
+
+$port = $_SERVER['SERVER_PORT'];
+$port = ( ( ( ! $ssl && $port == '8080' ) || ( ! $ssl && $port == '80' ) ) || ( $ssl && $port=='443' ) ) ? '' : ':' . $port;
+
+$host = isset( $host ) ? $host : $_SERVER['SERVER_NAME'] . $port;
+
+echo $protocol . '://' . $host;
+
 // Crea un objeto de pagador
 /*
 $payer = new MercadoPago\Payer();
@@ -47,9 +62,9 @@ $preference->external_reference = "daniel@dp07daniel.com";
 //$preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
 $preference->back_urls = array(
-  "success" => __DIR__."success.php",
-  "pending" => __DIR__."pending.php",
-  "failure" => __DIR__."failure.php"
+  "success" => $protocol . '://' . $host . "/success.php",
+  "pending" => $protocol . '://' . $host . "/pending.php",
+  "failure" => $protocol . '://' . $host . "/failure.php"
 );
 $preference->save();
 

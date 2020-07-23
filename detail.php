@@ -37,6 +37,7 @@ $item = new MercadoPago\Item();
 $item->id = "1234";
 $item->title = $_POST['title'];
 $item->description = "Dispositivo móvil de Tienda e-commerce";
+$item->picture_url = $_POST['img'];
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 
@@ -45,6 +46,11 @@ $preference->items = array($item);
 $preference->external_reference = "daniel@dp07daniel.com";
 //$preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
+$preference->back_urls = array(
+  "success" => __DIR__."success.php",
+  "pending" => __DIR__."pending.php",
+  "failure" => __DIR__."failure.php"
+);
 $preference->save();
 
 

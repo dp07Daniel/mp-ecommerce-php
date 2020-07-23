@@ -142,6 +142,6 @@ body {
         </div>
     </div>
 
-
+<script src="https://www.mercadopago.com/v2/security.js" view=""></script>
 </body>
 </html>

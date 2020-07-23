@@ -16,7 +16,7 @@ file_put_contents(
   json_encode($webhookContent) . PHP_EOL,
   FILE_APPEND
 );
-$msg = json_encode($webhookContent) . PHP_EOL;
+$msg = "prueba-".json_encode($webhookContent);
 mail("dapazos.89@gmail.com","Información recibida", $msg);
 /*
 // SDK de Mercado Pago
